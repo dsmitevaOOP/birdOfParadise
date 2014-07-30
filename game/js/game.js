@@ -13,6 +13,8 @@ bgImage.onload = function () {
 };
 bgImage.src = "images/background.png";
 
+// Pseudo-classes
+
 // Hero image
 var heroReady = false;
 var heroImage = new Image();
@@ -27,7 +29,7 @@ var creepImage = new Image();
 creepImage.onload = function () {
     creepReady = true;
 };
-creepImage.src = "images/creep.png";
+creepImage.src = "../img/Soviet-tank/soviet_tank_body_pos1.png";
 
 // Game objects
 var hero = {
@@ -35,7 +37,7 @@ var hero = {
 };
 
 function creep(speed,x,y){
-    this.speed = 332;
+    this.speed = 200;
     this.x = x;
     this.y = y;
 }
@@ -114,7 +116,7 @@ var update = function (modifier) {
         ) {
             
             ++creepsHit;
-            reset();
+            // reset();
             
         }
         if (creeps[i].x > canvas.width-110 || creeps[i].x < 0) {
@@ -170,7 +172,6 @@ var render = function () {
 var main = function () {
     var now = Date.now();
     var delta = now - then;
-
     update(delta / 1000);
     render();
 
@@ -184,7 +185,7 @@ var main = function () {
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
-// СТАРТ
+// Start the game
 var then = Date.now();
 reset();
 main();
