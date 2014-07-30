@@ -116,7 +116,12 @@ var update = function (modifier) {
         ) {
             
             ++creepsHit;
-            // reset();
+            //reset();
+            hero.speed = 0;
+            for(var i = 0; i < creeps.length; i++) {
+                creep[i].x = this.x;
+                creep[i].y = this.y;
+            }
             
         }
         if (creeps[i].x > canvas.width-110 || creeps[i].x < 0) {
