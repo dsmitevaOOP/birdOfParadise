@@ -47,6 +47,7 @@ for (var i = 0; i < creepCount; i++){
     creeps[i] = new creep();
 }
 var health = 100;
+var lvl = 1;
 
 // Handle keyboard controls
 var keysDown = {};
@@ -62,16 +63,18 @@ addEventListener("keyup", function (e) {
 // Reset the game when the player catches a creep
 var reset = function () {
     hero.x = canvas.width / 2;
-    hero.y = canvas.height - canvas.height/6;
+    hero.y = canvas.height - canvas.height/8;
 
     // Throw the creep somewhere on the screen randomly
 
     for (i = 0; i < creepCount; i++) {
+        //Spawn creeps going left
         creeps[i].x = 32 + (Math.random() * (canvas.width - 164));
-        creeps[i].y = 32 + (Math.random() * (canvas.height - 164)); 
+        creeps[i].y = 64 + (Math.random() * (canvas.height - 164)); 
+        //Spawn creeps goirng right
         if(i > creepCount/2){
              creeps[i].x = 32 + (Math.random() * (canvas.width - 164));
-             creeps[i].y = 32 + (Math.random() * (canvas.height - 164)); 
+             creeps[i].y = 64 + (Math.random() * (canvas.height - 164)); 
         }       
     }
 };
@@ -90,15 +93,28 @@ var update = function (modifier) {
  
     }
     if (37 in keysDown) { // Player holding left
-        // heroImage.src = "../img/German-tank/bernhard-left.png";
+        heroImage.src = "../img/German-tank/tank-left.png";
         hero.x -= hero.speed * modifier;
  
     }
     if (39 in keysDown) { // Player holding right
-        // heroImage.src = "../img/German-tank/bernhard-right.png";
+         heroImage.src = "../img/German-tank/tank-right.png";
         hero.x += hero.speed * modifier;
  
     }
+    if(38 in keysDown && 39 in keysDown){ // 45 degrees up and right
+         heroImage.src = "../img/German-tank/upRight45.png";        
+    }
+    if(38 in keysDown && 37 in keysDown){ // 45 degrees up and left
+         heroImage.src = "../img/German-tank/upLeft45.png";        
+    }
+    if(40 in keysDown && 39 in keysDown){ // 45 degrees down and right
+         heroImage.src = "../img/German-tank/downRight45.png";        
+    }
+    if(40 in keysDown && 37 in keysDown){ // 45 degrees down and right
+         heroImage.src = "../img/German-tank/downLeft45.png";        
+    }
+
 
     for (var i = 0; i < creepCount; i++) {
         
@@ -139,6 +155,19 @@ var update = function (modifier) {
             hero.y = canvas.height - 50;
         }
 
+        // LEVEL FINISH LINE
+        if (hero.y < 15){
+            ctx.fillStyle = "black";
+            ctx.fillRect(0,50,canvas.width,canvas.height - 50);
+            ctx.fillStyle = "#FF0000";
+            ctx.font = "2p6x Helvetica bold";
+            ctx.textBaseline = "top";
+            ctx.textAlign = "left";
+            ctx.fillText("GOOD JOB! NEXT LEVEL", 150, canvas.height/2);
+            reset()
+            lvl++;
+        }
+
     }
     // Are they touching?
 };
@@ -159,14 +188,13 @@ var render = function () {
         }
     }
 
-    // ctx.rotate(0.00025);
-    // ctx.drawImage(hero, hero.x, hero.y);
-
     // UI
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0,canvas.width,50);
 
-    // HEALTH BAR and DEATH
+
+
+    // HEALTH BAR, DEATH and LEVEL 
     if (health <= 0) {
         ctx.fillStyle = "black";
         ctx.fillRect(0,50,canvas.width,canvas.height - 50);
@@ -177,7 +205,7 @@ var render = function () {
         ctx.textAlign = "left";
         ctx.fillText("DIE RUSSEN HABEN DICH ÜBERGETRAMPELT!", 150, canvas.height/2);
         if (health <= -9000) {
-            ctx.fillText("It's UNDER 9000. Wow.");
+            ctx.fillText("It's UNDER 9000. Wow."); // XAXAXAX
         }
     } else if (health <= 20) {
         ctx.fillStyle = "red";
@@ -200,6 +228,12 @@ var render = function () {
     ctx.textBaseline = "top";
     ctx.textAlign = "left";
     ctx.fillText("HP: " + health, 10, 10);
+    //Level
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "24px Helvetica bold";
+    ctx.textBaseline = "top";
+    ctx.textAlign = "left";
+    ctx.fillText("LEVEL: " + lvl, 100, 10);
 };
 
 // The main game loop
