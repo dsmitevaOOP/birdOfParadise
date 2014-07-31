@@ -13,8 +13,6 @@ bgImage.onload = function () {
 };
 bgImage.src = "../img/background.jpg";
 
-// Pseudo-classes
-
 // Hero image
 var heroReady = false;
 var heroImage = new Image();
@@ -42,8 +40,7 @@ function creep(speed,x,y){
     this.y = y;
 }
 
-var creepCount = 8; // number of creeps
-
+var creepCount = 30; // number of creeps
 var creeps = [];  
 
 for (var i = 0; i < creepCount; i++){
@@ -120,12 +117,8 @@ var update = function (modifier) {
         ) {
             
             health -= 20;
-            // reset();
-            // hero.speed = 0;
-            
             creeps[i].x = this.x;
             creeps[i].y = this.y;
-            
             
         }
         if (creeps[i].x > canvas.width || creeps[i].x < -64) {
@@ -166,16 +159,40 @@ var render = function () {
         }
     }
 
-    // ctx.rotate(0.0003);
+    // ctx.rotate(0.00025);
     // ctx.drawImage(hero, hero.x, hero.y);
 
+    // UI
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0,0,canvas.width,50);
+
+
+
+    // HEALTH BAR and DEATH
+    if (health <= 0) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0,50,canvas.width,canvas.height - 50);
+    } else if (health <= 20) {
+        ctx.fillStyle = "red";
+        ctx.fillRect(0,50,canvas.width / 5, 5);    
+    } else if (health <= 40) {
+        ctx.fillStyle = "orange";
+        ctx.fillRect(0,50,canvas.width / 3, 5);    
+    } else if (health <= 80) {
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(0,50,canvas.width / 1.5, 5);
+    } else if (health <= 100) {
+        ctx.fillStyle = "green";
+        ctx.fillRect(0,50,canvas.width, 5);
+    }
+    
 
     // Score
-    ctx.fillStyle = "rgb(255,0,0)";
+    ctx.fillStyle = "#FFFFFF";
     ctx.font = "24px Helvetica bold";
     ctx.textBaseline = "top";
     ctx.textAlign = "left";
-    ctx.fillText("HP: " + health, 32, 22);
+    ctx.fillText("HP: " + health, 10, 10);
 };
 
 // The main game loop
@@ -199,6 +216,3 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 var then = Date.now();
 reset();
 main();
-console.log();
-console.log();
-console.log();
