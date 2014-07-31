@@ -165,13 +165,17 @@ var render = function () {
     // UI
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0,canvas.width,50);
-
-
-
+    
     // HEALTH BAR and DEATH
     if (health <= 0) {
         ctx.fillStyle = "black";
         ctx.fillRect(0,50,canvas.width,canvas.height - 50);
+
+        ctx.fillStyle = "#FF0000";
+        ctx.font = "2p6x Helvetica bold";
+        ctx.textBaseline = "top";
+        ctx.textAlign = "left";
+        ctx.fillText("DIE RUSSEN HABEN DICH ÜBERGETRAMPELT!", 150, canvas.height/2);
     } else if (health <= 20) {
         ctx.fillStyle = "red";
         ctx.fillRect(0,50,canvas.width / 5, 5);    
