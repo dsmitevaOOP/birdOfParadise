@@ -40,7 +40,7 @@ function creep(speed,x,y){
     this.y = y;
 }
 
-var creepCount = 30; // number of creeps
+var creepCount = 40; // number of creeps
 var creeps = [];  
 
 for (var i = 0; i < creepCount; i++){
@@ -116,7 +116,7 @@ var update = function (modifier) {
 		    && creeps[i].y <= (hero.y + 32)
         ) {
             
-            health -= 20;
+            health -= 10;
             creeps[i].x = this.x;
             creeps[i].y = this.y;
             
@@ -165,7 +165,7 @@ var render = function () {
     // UI
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0,canvas.width,50);
-    
+
     // HEALTH BAR and DEATH
     if (health <= 0) {
         ctx.fillStyle = "black";
@@ -176,6 +176,9 @@ var render = function () {
         ctx.textBaseline = "top";
         ctx.textAlign = "left";
         ctx.fillText("DIE RUSSEN HABEN DICH ÜBERGETRAMPELT!", 150, canvas.height/2);
+        if (health <= -9000) {
+            ctx.fillText("It's UNDER 9000. Wow.");
+        }
     } else if (health <= 20) {
         ctx.fillStyle = "red";
         ctx.fillRect(0,50,canvas.width / 5, 5);    
