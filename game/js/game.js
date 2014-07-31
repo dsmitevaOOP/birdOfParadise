@@ -40,7 +40,7 @@ function creep(speed,x,y){
     this.y = y;
 }
 
-var creepCount = 40; // number of creeps
+var creepCount = 50; // number of creeps
 var creeps = [];  
 
 for (var i = 0; i < creepCount; i++){
@@ -115,7 +115,6 @@ var update = function (modifier) {
          heroImage.src = "../img/German-tank/downLeft45.png";        
     }
 
-
     for (var i = 0; i < creepCount; i++) {
         
         if (i > creepCount/2){
@@ -171,11 +170,13 @@ var update = function (modifier) {
     }
     // Are they touching?
 };
+var mover = 0;
 // Draw everything
 var render = function () {
     if (bgReady) {
         ctx.globalAlpha = 0.3; // changes the dynamic opacity of the background
-        ctx.drawImage(bgImage, 0, 0);
+        ctx.drawImage(bgImage, 0, mover);
+        mover+= 0.01;
     }
 
     if (heroReady) {
@@ -192,8 +193,6 @@ var render = function () {
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0,canvas.width,50);
 
-
-
     // HEALTH BAR, DEATH and LEVEL 
     if (health <= 0) {
         ctx.fillStyle = "black";
@@ -205,7 +204,8 @@ var render = function () {
         ctx.textAlign = "left";
         ctx.fillText("DIE RUSSEN HABEN DICH ÜBERGETRAMPELT!", 150, canvas.height/2);
         if (health <= -9000) {
-            ctx.fillText("It's UNDER 9000. Wow."); // XAXAXAX
+            ctx.fillStyle = "#00FF00";
+            ctx.fillText("It's UNDER 9000. Wow.", 150, canvas.height/2 + 30); // XAXAXAX
         }
     } else if (health <= 20) {
         ctx.fillStyle = "red";
@@ -228,12 +228,12 @@ var render = function () {
     ctx.textBaseline = "top";
     ctx.textAlign = "left";
     ctx.fillText("HP: " + health, 10, 10);
-    //Level
+    // Level
     ctx.fillStyle = "#FFFFFF";
     ctx.font = "24px Helvetica bold";
     ctx.textBaseline = "top";
     ctx.textAlign = "left";
-    ctx.fillText("LEVEL: " + lvl, 100, 10);
+    ctx.fillText("LEVEL: " + lvl, 110, 10);
 };
 
 // The main game loop
