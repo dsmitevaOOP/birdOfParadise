@@ -103,9 +103,9 @@ var update = function (modifier) {
     for (var i = 0; i < creepCount; i++) {
         
         if (i > creepCount/2){
-            creeps[i].x -= creeps[i].speed * modifier;
-        }else{
-            creeps[i].x += creeps[i].speed * modifier;
+            creeps[i].x -= creeps[i].speed * modifier; // tanks going left
+        } else {
+            creeps[i].x += creeps[i].speed * modifier; // tanks going right
         }  
 
         // if block, where collision occurs
