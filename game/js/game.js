@@ -1,8 +1,8 @@
 // Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 512;
-canvas.height = 480;
+canvas.width = 900;
+canvas.height = 600;
 document.body.appendChild(canvas);
 
 // Background image
@@ -11,7 +11,7 @@ var bgImage = new Image();
 bgImage.onload = function () {
     bgReady = true;
 };
-bgImage.src = "images/background.png";
+bgImage.src = "../img/background.jpg";
 
 // Pseudo-classes
 
@@ -21,7 +21,7 @@ var heroImage = new Image();
 heroImage.onload = function () {
     heroReady = true;
 };
-heroImage.src = "images/hero.png";
+heroImage.src = "../img/German-tank/bernhard.png";
 
 // creep image
 var creepReady = false;
@@ -33,24 +33,23 @@ creepImage.src = "../img/Soviet-tank/soviet_tank_body_pos1.png";
 
 // Game objects
 var hero = {
-    speed: 256 // movement speed
+    speed: 100 // movement speed
 };
 
 function creep(speed,x,y){
-    this.speed = 200;
+    this.speed = 100;
     this.x = x;
     this.y = y;
 }
 
-var i;
 var creepCount = 8; // number of creeps
 
 var creeps = [];  
 
-for (i = 0; i < creepCount; i++){
+for (var i = 0; i < creepCount; i++){
     creeps[i] = new creep();
 }
-var creepsHit = 0;
+var health = 100;
 
 // Handle keyboard controls
 var keysDown = {};
@@ -84,18 +83,22 @@ var reset = function () {
 var update = function (modifier) {
 
     if (38 in keysDown) { // Player holding up
+        heroImage.src = "../img/German-tank/bernhard.png";
         hero.y -= hero.speed * modifier;
  
     }
     if (40 in keysDown) { // Player holding down
+        heroImage.src = "../img/German-tank/bernhard-down.png";
         hero.y += hero.speed * modifier;
  
     }
     if (37 in keysDown) { // Player holding left
+        // heroImage.src = "../img/German-tank/bernhard-left.png";
         hero.x -= hero.speed * modifier;
  
     }
     if (39 in keysDown) { // Player holding right
+        // heroImage.src = "../img/German-tank/bernhard-right.png";
         hero.x += hero.speed * modifier;
  
     }
@@ -108,6 +111,7 @@ var update = function (modifier) {
             creeps[i].x += creeps[i].speed * modifier;
         }  
 
+        // if block, where collision occurs
         if (
 		    hero.x <= (creeps[i].x + 32)
 		    && creeps[i].x <= (hero.x + 32)
@@ -115,22 +119,22 @@ var update = function (modifier) {
 		    && creeps[i].y <= (hero.y + 32)
         ) {
             
-            ++creepsHit;
-            //reset();
-            hero.speed = 0;
-            for(var i = 0; i < creeps.length; i++) {
-                creep[i].x = this.x;
-                creep[i].y = this.y;
-            }
+            health -= 20;
+            // reset();
+            // hero.speed = 0;
+            
+            creeps[i].x = this.x;
+            creeps[i].y = this.y;
+            
             
         }
-        if (creeps[i].x > canvas.width-110 || creeps[i].x < 0) {
+        if (creeps[i].x > canvas.width || creeps[i].x < -64) {
             if (i > creepCount / 2){
-                creeps[i].x = canvas.width - 110; 
+                creeps[i].x = canvas.width; 
             }else{
-                creeps[i].x = 32;
+                creeps[i].x = -64;
             }
-            creeps[i].y = 32 + (Math.random() * (canvas.height - 164));
+            creeps[i].y = Math.random() * (canvas.height - 100);
         }
         if (hero.x > canvas.width - 110) {
             hero.x = canvas.width - 110;
@@ -145,15 +149,16 @@ var update = function (modifier) {
     }
     // Are they touching?
 };
-
 // Draw everything
 var render = function () {
     if (bgReady) {
+        ctx.globalAlpha = 0.3; // changes the dynamic opacity of the background
         ctx.drawImage(bgImage, 0, 0);
     }
 
     if (heroReady) {
-            ctx.drawImage(heroImage, hero.x, hero.y);
+        ctx.globalAlpha = 1; // opacity for everything else
+        ctx.drawImage(heroImage, hero.x, hero.y);
     }
     for (i = 0; i < creepCount; i++) {
         if (creepReady) {
@@ -161,16 +166,16 @@ var render = function () {
         }
     }
 
-    //ctx.rotate(2);
-    //ctx.drawImage(hero, hero.x, hero.y);
+    // ctx.rotate(0.0003);
+    // ctx.drawImage(hero, hero.x, hero.y);
 
 
     // Score
-    ctx.fillStyle = "rgb(250, 250, 250)";
-    ctx.font = "24px Helvetica";
+    ctx.fillStyle = "rgb(255,0,0)";
+    ctx.font = "24px Helvetica bold";
     ctx.textBaseline = "top";
     ctx.textAlign = "left";
-    ctx.fillText("Farts caught: " + creepsHit, 32, 32);
+    ctx.fillText("HP: " + health, 32, 22);
 };
 
 // The main game loop
