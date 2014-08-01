@@ -212,9 +212,8 @@ var render = function () {
         ctx.textBaseline = "top";
         ctx.textAlign = "left";
         ctx.fillText("GAME OVER", 400, canvas.height/2);
-        if (health <= -9000) {
-            ctx.fillStyle = "#00FF00";
-            ctx.fillText("It's UNDER 9000. Wow.", 150, canvas.height/2 + 30); // XAXAXAX
+        if (health <= 0) {
+            health = 0;
         }
     } else if (health <= 20) {
         ctx.fillStyle = "red";
