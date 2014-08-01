@@ -11,7 +11,7 @@ var bgImage = new Image();
 bgImage.onload = function () {
     bgReady = true;
 };
-bgImage.src = "../img/bg.jpg";
+bgImage.src = "img/bg.jpg";
 
 // Hero image
 var heroReady = false;
@@ -19,7 +19,7 @@ var heroImage = new Image();
 heroImage.onload = function () {
     heroReady = true;
 };
-heroImage.src = "../img/German-tank/bernhard.png";
+heroImage.src = "img/German-tank/bernhard.png";
 
 // creep image
 var creepReady = false;
@@ -32,13 +32,13 @@ creepLeftImage.onload = function () {
 creepRightImage.onload = function () {
     creepReady = true;
 };
-creepLeftImage.src = "../img/Soviet-tank/tankLeftShadow.png";
-creepRightImage.src = "../img/Soviet-tank/tankRightShadow.png";
+creepLeftImage.src = "img/Soviet-tank/tankLeftShadow.png";
+creepRightImage.src = "img/Soviet-tank/tankRightShadow.png";
 
 
 // Game objects
 var hero = {
-    speed: 100 // movement speed
+    speed: 250 // movement speed
 };
 
 function creep(speed,x,y,side){
@@ -93,36 +93,36 @@ var reset = function () {
 var update = function (modifier) {
 
     if (38 in keysDown) { // Player holding up
-        heroImage.src = "../img/German-tank/bernhard.png";
+        heroImage.src = "img/German-tank/bernhard.png";
         hero.y -= hero.speed * modifier;
  
     }
     if (40 in keysDown) { // Player holding down
-        heroImage.src = "../img/German-tank/bernhard-down.png";
+        heroImage.src = "img/German-tank/bernhard-down.png";
         hero.y += hero.speed * modifier;
  
     }
     if (37 in keysDown) { // Player holding left
-        heroImage.src = "../img/German-tank/tank-left.png";
+        heroImage.src = "img/German-tank/tank-left.png";
         hero.x -= hero.speed * modifier;
  
     }
     if (39 in keysDown) { // Player holding right
-         heroImage.src = "../img/German-tank/tank-right.png";
+         heroImage.src = "img/German-tank/tank-right.png";
         hero.x += hero.speed * modifier;
  
     }
     if(38 in keysDown && 39 in keysDown){ // 45 degrees up and right
-         heroImage.src = "../img/German-tank/upRight45.png";        
+         heroImage.src = "img/German-tank/upRight45.png";        
     }
     if(38 in keysDown && 37 in keysDown){ // 45 degrees up and left
-         heroImage.src = "../img/German-tank/upLeft45.png";        
+         heroImage.src = "img/German-tank/upLeft45.png";        
     }
     if(40 in keysDown && 39 in keysDown){ // 45 degrees down and right
-         heroImage.src = "../img/German-tank/downRight45.png";        
+         heroImage.src = "img/German-tank/downRight45.png";        
     }
     if(40 in keysDown && 37 in keysDown){ // 45 degrees down and right
-         heroImage.src = "../img/German-tank/downLeft45.png";        
+         heroImage.src = "img/German-tank/downLeft45.png";        
     }
 
     for (var i = 0; i < creepCount; i++) {
@@ -135,10 +135,10 @@ var update = function (modifier) {
 
         // if block, where collision occurs
         if (
-		    hero.x <= (creeps[i].x + 32)
-		    && creeps[i].x <= (hero.x + 32)
-		    && hero.y <= (creeps[i].y + 15)
-		    && creeps[i].y <= (hero.y + 42)
+            hero.x <= (creeps[i].x + 32)
+            && creeps[i].x <= (hero.x + 32)
+            && hero.y <= (creeps[i].y + 15)
+            && creeps[i].y <= (hero.y + 42)
         ) {
             
             health -= 10;

@@ -1,0 +1,320 @@
+#container{
+    position: relative;
+    width: 960px; height: 1280px; 
+    margin: auto; background-color: #292323;
+    outline-color: #000; 
+    overflow: auto;        
+}
+
+body{background-color: #403b3b}
+
+#head{
+    position: relative; 
+    width:960px;
+    font:50px Rockwell;
+    color:#a02a2a;  
+    text-align: center;
+    margin: auto;
+}
+
+nav{height: 30px}
+
+li.menu{
+    position: relative; 
+    display: inline; 
+    margin: 39px;
+    font:20px Rockwell;
+    letter-spacing: 4px;
+}
+
+ul.menu{background-color: #5c5454;}
+a.navi{
+    text-decoration:none;
+    color:#262626;   
+}
+a{text-decoration:none;}
+a.navi:hover{color:#ffffff;}
+a.navi:active{color:rgba(147, 78, 78, 0.84);}
+
+#firstPanel{
+    position: absolute;
+    height: 270px; 
+    width: 960px;
+    position: relative;
+    top: 40px
+}
+
+#pic1{
+    height: 190px; 
+    float: left; 
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 4px;
+    position:absolute;
+     border: 3px solid;
+    border-color: #716d6d;
+    border-radius: 10px;
+}
+
+h1.welcome{
+    margin-left: 350px;
+    margin-top: 30px;
+    font:18px Rockwell;
+    color:#a02a2a;
+}
+h2 {
+    font:18px Rockwell;
+    color:#a02a2a;
+    width: 220px;
+    float: right;
+    margin-right: 30px;
+}
+p.text1{
+    margin-left: 350px;
+    height: 50px;
+    border-bottom: 2px solid;
+    border-color: #716d6d;
+    font:14px Rockwell;
+    color:#716d6d;
+    margin-right: 28px;
+    text-align: justify;
+}
+#trip{
+    margin-top: -150px;
+    margin-right: 20px;
+    height: 300px;
+    width: 530px;
+    float: right;
+}
+
+#pic2{
+    height: 273px;
+    width: 230px;
+    float: right; 
+    border: 3px solid;
+    border-color: #716d6d;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+p.bus{
+    font:14px Rockwell;
+    color:#716d6d;
+    text-align: justify;
+    height: 190px;
+    border-bottom: 2px solid;
+    border-color: #716d6d;
+    width: 230px;
+    float: right;
+    margin-top: -2px;
+    font:14px Rockwell;
+    color:#716d6d;
+    margin-right: 28px;
+    text-align: justify;
+}
+
+#cpicture{
+    height: 180px;
+    float: left; 
+    margin-left: 30px;
+    margin-right: 20px;
+    position:absolute;
+    border: 3px solid;
+    border-color: #716d6d;
+    border-radius: 10px;
+}
+
+#cp{
+    width: 380px;
+    height: 400px;
+    margin-top: -20px;
+    border-right: 2px solid;
+    border-color: #716d6d;
+}
+
+h3{
+    font:18px Rockwell;
+    color:#a02a2a;
+    width: 240px;
+    margin-left: 30px;
+    position: absolute;
+    margin-top: 200px;
+}
+p.start{
+    position: absolute;
+    width: 324px;
+    margin-left: 30px;
+    margin-top: 240px;
+    font:14px Rockwell;
+    color:#716d6d;
+    margin-right: 28px;
+    text-align: justify;
+    
+}
+
+#tron{
+    height: 200px;
+    position: absolute;
+    margin-top: 57px;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    border-color: rgba(26, 199, 244, 0.88);
+}
+#pictron{
+    margin-left: 30px;
+    margin-top:  59px;
+    float: left;
+    height: 199px;
+        
+}
+p.ptron{  
+    font:14px Rockwell;
+    color:#716d6d;
+    margin-top: 10px;
+    margin-left: 330px;
+    margin-right: 28px;
+    text-align: justify;
+}
+p.htron{
+    font:18px Rockwell;
+    color:#a02a2a;
+    margin-left: 330px;
+    margin-top: 60px;
+}
+#kb{
+    height: 200px;
+    position: absolute;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    border-color: #716d6d;
+    margin-top: 300px;
+    width: 960px;
+}
+#kill{
+    margin-left: 55px;
+    height:200px;
+    float: left
+}
+#ilich{
+    height: 200px;
+    position: absolute;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    border-color: #a02a2a;
+    margin-top: 540px;
+    width: 960px;
+}
+#peter{
+    position: absolute;
+    margin-left: 55px;
+    height:200px;
+    float: left
+}
+#spinv{
+    height: 640px;
+    margin-top: 50px;
+    width: 400px;
+    float: right;
+}
+#scrn{ 
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 70px;
+    float: left; 
+}
+#hutta{
+    margin-right: 45px;
+    margin-top: 20px;
+    float: right;
+    width: 350px;
+    font:23px Rockwell;
+    color:#a02a2a;
+}
+#descript{
+    margin-right: 50px;
+    width: 340px;
+    float: right;
+    font: 19px rockwell;
+    color: rgba(147, 78, 78, 0.84);
+}
+ul.features{
+    font:19px Rockwell;
+    float:right;
+    margin-right: 50px;
+    color: #716d6d;
+    letter-spacing: 0px;
+    font-style: italic;
+    list-style-type:katakana;
+}
+
+#cows{
+    position: relative;
+    margin-left: 140px;
+    margin-top: 10px;
+    width: 670px;
+}
+#picbull{
+    position: absolute;
+    margin-top: 560px;
+    margin-left: 85px;
+    width: 800px;
+}
+
+#firstgame{
+    font:18px Rockwell;
+    color:#a02a2a;
+    width: 670px;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 23px;
+    height: 40px;
+    border-bottom: 2px solid;
+}
+#descr{
+    width: 670px;
+    text-align: center;
+    font:20px Rockwell;
+    color: rgba(147, 78, 78, 0.84);
+}
+ul.how{
+    position: absolute;
+    width: 450px;
+    text-align:justify;
+    margin-top: 30px;
+    margin-left: 100px;
+    color: #716d6d;
+    font-style: italic;
+    font:18px Rockwell;
+    height: 330px;
+    border-bottom: 2px solid;
+    list-style-type:katakana;
+}
+
+/*JavaScript*/
+#game{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.descript>h1{
+    font:28px Rockwell;
+    color:#a02a2a;
+}
+.descript>p{
+    font:19px Rockwell;
+    float:right;
+    color: #716d6d;
+    letter-spacing: 0px;
+    font-style: italic;
+    margin-top:-10px;
+}
+ 
+
+footer{
+    bottom: 0;
+    position: absolute;
+    font:14px Rockwell;
+    color:#716d6d;
+    width: 960px;
+    text-align: center;
+    }
